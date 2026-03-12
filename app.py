@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(__file__)
 
 @st.cache_data
 def load_movies():
-    movies = pd.read_csv(os.path.join(BASE_DIR,"dataset/movies.csv"))
+    movies = pd.read_csv(os.path.join(BASE_DIR,"movies.csv"))
     movies = movies.rename(columns={'Movie Name':'title','Genre':'genres'})
     return movies
 movies = load_movies()
@@ -21,4 +21,5 @@ if st.button("Recommend"):
     col1, col2, col3, col4, col5 = st.columns(5)
     for i, col in enumerate([col1, col2, col3, col4, col5]):
         if i < len(names):
+
             col.write(names[i])
