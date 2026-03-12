@@ -6,7 +6,7 @@ import os
 BASE_DIR = os.path.dirname(__file__)
 
 # Load dataset
-movies = pd.read_csv(os.path.join(BASE_DIR,"dataset/movies.csv"))
+movies = pd.read_csv(os.path.join(BASE_DIR,"movies.csv"))
 
 movies = movies.rename(columns={'Movie Name':'title','Genre':'genres'})
 
@@ -31,5 +31,6 @@ def recommend(movie):
     similarity = cosine_similarity(movie_vector, vectors).flatten()
 
     recommended_idx = similarity.argsort()[-6:-1][::-1]
+
 
     return [movies.iloc[i].title for i in recommended_idx]
