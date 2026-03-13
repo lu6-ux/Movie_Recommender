@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(__file__)
 
 @st.cache_data
 def load_movies():
-    movies = pd.read_csv(os.path.join(BASE_DIR,"dataset/movies.csv"))
+    movies = pd.read_csv(os.path.join(BASE_DIR,"movies.csv"))
     movies = movies.rename(columns={'Movie Name':'title','Genre':'genres'})
     return movies
 
@@ -53,3 +53,4 @@ if st.button("🎯 Recommend Movies"):
                 st.markdown(
                     f"[▶ Watch Trailer]({trailer_link(movie)})"
                 )
+
